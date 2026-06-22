@@ -1,0 +1,19 @@
+# Python (planned week 3+)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Node (planned week 9+)
+node_modules/
+dist/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Word temp
+~$*.docx
