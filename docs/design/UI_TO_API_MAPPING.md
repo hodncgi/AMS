@@ -41,10 +41,11 @@ Maps each Figma template area to Group 3 backend routes defined in [../developer
 
 ## Group 2 integration (future)
 
-```
-Figma shell (Onboarding) ──POST /chat──► G3 FastAPI
-G2 risk site forms      ──POST /change-risk──► G3 FastAPI
-G2 intake wizard        ──POST /nbq/next──► G3 FastAPI
+```mermaid
+flowchart LR
+    F1[Figma shell — Onboarding] -->|POST /chat| API[G3 FastAPI]
+    F2[G2 risk site forms] -->|POST /change-risk| API
+    F3[G2 intake wizard] -->|POST /nbq/next| API
 ```
 
 See [../developer/G2_INTEGRATION.md](../developer/G2_INTEGRATION.md).

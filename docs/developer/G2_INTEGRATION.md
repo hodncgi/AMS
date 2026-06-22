@@ -6,13 +6,26 @@ G3 delivers the algorithmic engine; Group 2 owns the risk analysis site UI.
 
 ## Planned integration model
 
-```
-Group 2 site (future)          G3 FastAPI (Week 3+)
-─────────────────────          ────────────────────
-Onboarding / intake UI   →     POST /chat
-Risk forms               →     POST /change-risk
-Intake wizard            →     POST /nbq/next
-Monitoring               →     GET /health
+```mermaid
+flowchart LR
+    subgraph G2["Group 2 site (future)"]
+        A[Onboarding / intake UI]
+        B[Risk forms]
+        C[Intake wizard]
+        D[Monitoring]
+    end
+
+    subgraph G3["G3 FastAPI (Week 3+)"]
+        E[POST /chat]
+        F[POST /change-risk]
+        G[POST /nbq/next]
+        H[GET /health]
+    end
+
+    A --> E
+    B --> F
+    C --> G
+    D --> H
 ```
 
 ## Contracts

@@ -6,10 +6,22 @@
 
 ## React application (Week 9)
 
-Full Vite + React integration from the Figma export is scheduled for Week 9:
+```mermaid
+flowchart LR
+    subgraph FE["frontend/chatbot-onboarding/"]
+        Vite[Vite dev server :3000]
+        Onb[Onboarding tab<br/>ChatInterface]
+        Demo[Demo tabs<br/>static content]
+    end
 
-- `frontend/chatbot-onboarding/` — live Onboarding tab  
-- Proxy to FastAPI `/chat`  
-- shadcn/ui components from template  
+    subgraph BE["backend :8000"]
+        Chat[POST /chat]
+    end
+
+    Onb -->|proxy /api| Chat
+    Demo -.->|no API v1| Demo
+```
+
+Planned stack: React, TypeScript, Vite, shadcn/ui from Figma template.
 
 See [../docs/design/FIGMA_TEMPLATE_REVIEW.md](../docs/design/FIGMA_TEMPLATE_REVIEW.md).

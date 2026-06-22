@@ -28,12 +28,17 @@ Define what the onboarding assistant **may** answer in v1 and how knowledge is s
 
 ## 4. Retrieval strategy (planned)
 
-```
-User question
-    → keyword match on chunks (Week 6–7)
-    → inject algorithm context if risk/NBQ query (Week 8)
-    → Mistral generates answer with sources (Week 8)
-    → if LM Studio offline: fallback excerpts + explicit message
+```mermaid
+flowchart TD
+    Q[User question] --> KW[keyword match on chunks<br/>Week 6–7]
+    KW --> ALG{Risk or NBQ query?}
+    ALG -->|yes| CTX[inject algorithm context<br/>Week 8]
+    ALG -->|no| GEN[Mistral generates answer<br/>with sources — Week 8]
+    CTX --> GEN
+    LS{LM Studio online?}
+    GEN --> LS
+    LS -->|yes| OK[Reply + sources]
+    LS -->|no| FB[fallback excerpts<br/>+ explicit message]
 ```
 
 ## 5. Source display requirements (US-13)

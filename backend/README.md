@@ -4,16 +4,16 @@ Backend implementation starts **Week 3** in this repository.
 
 ## Planned layout
 
-```
-backend/
-├── main.py              # FastAPI app — routes /health, /nbq/next, /change-risk, /chat
-├── config.py            # LM Studio, RAG, timeout settings
-├── algorithms.py        # NBQ + Change Risk (deterministic)
-├── ai_service.py        # Mistral + prompts + fallback
-├── rag_service.py       # Knowledge retrieval
-├── knowledge_base.py    # CGI topics + catalog chunks
-└── data/documents/
-    └── catalog.json     # Document chunks for RAG
+```mermaid
+flowchart TB
+    ROOT[backend/] --> MAIN[main.py — FastAPI routes]
+    ROOT --> CFG[config.py]
+    ROOT --> ALG[algorithms.py]
+    ROOT --> AI[ai_service.py]
+    ROOT --> RAG[rag_service.py]
+    ROOT --> KB[knowledge_base.py]
+    ROOT --> DATA[data/documents/]
+    DATA --> CAT[catalog.json]
 ```
 
 ## API contract

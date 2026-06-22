@@ -16,35 +16,41 @@ Group 2 owns the wider risk analysis site and will call G3 REST APIs.
 
 ## 2. High-level architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  Group 2 — Risk analysis / AMS portal (future integration)      │
-└────────────────────────────┬────────────────────────────────────┘
-                             │ HTTPS / JSON
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  G3 FastAPI backend (localhost:8000) — Week 3+                  │
-│  ┌─────────────┐ ┌──────────────┐ ┌─────────────────────────┐ │
-│  │ /nbq/next   │ │ /change-risk │ │ /chat                   │ │
-│  │ deterministic│ │ deterministic│ │ RAG + LM Studio/Mistral │ │
-│  └─────────────┘ └──────────────┘ └─────────────────────────┘ │
-│  GET /health — API + AI + RAG status                            │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-         ┌───────────────────┼───────────────────┐
-         ▼                   ▼                   ▼
-┌─────────────────┐ ┌───────────────┐ ┌─────────────────────┐
-│ algorithms.py   │ │ knowledge_base│ │ LM Studio :1234     │
-│ NBQ weights     │ │ + catalog.json│ │ Mistral 7B Instruct │
-│ Change risk     │ │ keyword RAG   │ │ (local inference)   │
-└─────────────────┘ └───────────────┘ └─────────────────────┘
+```mermaid
+flowchart TB
+    subgraph G2["Group 2 — Risk analysis site (future)"]
+        Portal[AMS Portal UI]
+    end
 
-┌─────────────────────────────────────────────────────────────────┐
-│  React onboarding UI (localhost:3000) — Week 9+                 │
-│  Onboarding tab → POST /api/chat (proxy to backend)             │
-│  Demo tabs: Dashboard, Documentation, Manager (static Figma)    │
-└─────────────────────────────────────────────────────────────────┘
+    subgraph API["G3 FastAPI — localhost:8000 (Week 3+)"]
+        Health[GET /health]
+        NBQ[POST /nbq/next<br/>deterministic]
+        Risk[POST /change-risk<br/>deterministic]
+        Chat[POST /chat<br/>RAG + Mistral]
+    end
+
+    subgraph Engine["Engine components"]
+        ALG[algorithms.py<br/>NBQ + Change Risk]
+        KB[knowledge_base<br/>+ catalog.json]
+        LM[(LM Studio :1234<br/>Mistral 7B)]
+    end
+
+    subgraph UI["React UI — localhost:3000 (Week 9+)"]
+        Onb[Onboarding tab<br/>live chat]
+        Demo[Dashboard · Docs · Manager<br/>static Figma demo]
+    end
+
+    Portal -->|HTTPS JSON| API
+    Onb -->|POST /api/chat| Chat
+    NBQ --> ALG
+    Risk --> ALG
+    Chat --> KB
+    Chat --> LM
+    KB --> Chat
+    Demo -.->|no API v1| Demo
 ```
+
+See also [ARCHITECTURE_DIAGRAM.md](ARCHITECTURE_DIAGRAM.md) for sequence and deployment views.
 
 ## 3. Design principles
 
@@ -92,23 +98,50 @@ Group 2 owns the wider risk analysis site and will call G3 REST APIs.
 
 ### NBQ request (Week 4+)
 
-```
-Client profile → POST /nbq/next → select_next_best_question()
-              → optional Mistral why → JSON response
+```mermaid
+sequenceDiagram
+    participant C as Client / G2
+    participant API as POST /nbq/next
+    participant ALG as select_next_best_question
+    participant LS as LM Studio
+
+    C->>API: profile { sector, solution }
+    API->>ALG: compute weights
+    ALG-->>API: best question + weight
+    API->>LS: generate why (optional)
+    LS-->>API: justification
+    API-->>C: { id, text, weight, why }
 ```
 
 ### Change Risk request (Week 5+)
 
-```
-criticality + test_days → POST /change-risk → compute_change_risk()
-                        → { score, drivers[] }
+```mermaid
+sequenceDiagram
+    participant C as Client / G2
+    participant API as POST /change-risk
+    participant ALG as compute_change_risk
+
+    C->>API: { criticality, test_days }
+    API->>ALG: score + drivers
+    ALG-->>API: { score, drivers[] }
+    API-->>C: JSON response
 ```
 
 ### Chat request (Week 8+)
 
-```
-messages[] → RAG retrieve → algorithm context (if risk/NBQ query)
-          → Mistral generate → { reply, sources, mode }
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant API as POST /chat
+    participant RAG as Knowledge base
+    participant LS as LM Studio
+
+    U->>API: messages[]
+    API->>RAG: retrieve chunks
+    RAG-->>API: context + sources
+    API->>LS: prompt + context
+    LS-->>API: JSON reply
+    API-->>U: { reply, sources, mode }
 ```
 
 ## 6. Technology stack (decided Week 2)

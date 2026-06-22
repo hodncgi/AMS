@@ -23,19 +23,18 @@
 
 ## Planned architecture (implementation Weeks 7–8)
 
-```
-User question
-     ↓
-Knowledge retrieval (keyword RAG — Week 6–7)
-     ↓
-System prompt + context + conversation history
-     ↓
-LM Studio — Mistral 7B Instruct (localhost:1234)
-     ↓
-JSON reply { reply, sources }
+```mermaid
+flowchart TD
+    Q[User question] --> RAG[Knowledge retrieval<br/>keyword RAG — Week 6–7]
+    RAG --> PROMPT[System prompt + context<br/>+ conversation history]
+    PROMPT --> LS[LM Studio — Mistral 7B<br/>localhost:1234]
+    LS --> OUT[JSON reply<br/>reply + sources]
+
+    LS -.->|unreachable| FB[Fallback mode<br/>knowledge excerpts + offline message]
+    RAG -.-> FB
 ```
 
-If LM Studio is unreachable → fallback mode with knowledge excerpts and a clear offline message.
+If LM Studio is unreachable, the fallback path returns knowledge excerpts with a clear offline message.
 
 ## Chatbot knowledge scope (Week 2 definition)
 
