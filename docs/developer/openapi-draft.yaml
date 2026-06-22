@@ -1,0 +1,182 @@
+openapi: 3.0.3
+info:
+  title: G3 AI Engine — AMS Intake
+  description: |
+    API contract draft for Group 2 integration (Week 2).
+    Implementation schedule: Weeks 3–8.
+    Change risk scores are decision-support only.
+  version: 0.2.0-draft
+  contact:
+    name: Hugo Davion & Axel Brazeau — Group 3
+
+servers:
+  - url: http://localhost:8000
+    description: Local development (from Week 3)
+
+paths:
+  /health:
+    get:
+      summary: API and AI subsystem status
+      tags: [Operations]
+      responses:
+        "200":
+          description: Health payload
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+
+  /nbq/next:
+    post:
+      summary: Next best intake question
+      tags: [Algorithms]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NBQRequest"
+      responses:
+        "200":
+          description: Selected question with weight and justification
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NBQResponse"
+
+  /change-risk:
+    post:
+      summary: Change risk score (0–100) with drivers
+      tags: [Algorithms]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChangeRiskRequest"
+      responses:
+        "200":
+          description: Score and auditable drivers
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChangeRiskResponse"
+
+  /chat:
+    post:
+      summary: Onboarding conversation with RAG
+      tags: [Chat]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatRequest"
+      responses:
+        "200":
+          description: Assistant reply with sources and mode
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatResponse"
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        api:
+          type: string
+          example: online
+        ai:
+          type: object
+        fallback_enabled:
+          type: boolean
+
+    NBQRequest:
+      type: object
+      required: [profile]
+      properties:
+        profile:
+          type: object
+          required: [sector, solution]
+          properties:
+            sector:
+              type: string
+              example: Healthcare
+            solution:
+              type: string
+              example: Custom
+
+    NBQResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        text:
+          type: string
+        weight:
+          type: integer
+        why:
+          type: string
+        fields:
+          type: array
+          items:
+            type: string
+
+    ChangeRiskRequest:
+      type: object
+      required: [criticality, test_days]
+      properties:
+        criticality:
+          type: string
+          enum: [low, medium, high]
+        test_days:
+          type: integer
+          minimum: 0
+
+    ChangeRiskResponse:
+      type: object
+      properties:
+        score:
+          type: integer
+          minimum: 0
+          maximum: 100
+        drivers:
+          type: array
+          items:
+            type: string
+
+    ChatRequest:
+      type: object
+      required: [messages]
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChatMessage"
+
+    ChatMessage:
+      type: object
+      required: [role, content]
+      properties:
+        role:
+          type: string
+          enum: [user, assistant]
+        content:
+          type: string
+
+    ChatResponse:
+      type: object
+      properties:
+        reply:
+          type: string
+        sources:
+          type: array
+          items:
+            type: string
+        mode:
+          type: string
+          enum: [mistral, fallback]
+        response_time_ms:
+          type: integer

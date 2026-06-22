@@ -1,22 +1,15 @@
-# Frontend — planned structure (implementation starts Week 9)
+# Frontend — Week 2
 
-No React application in this Week 2 milestone. The onboarding UI will be built in Week 9 from the Figma template.
+## Design preview (Week 2 deliverable)
 
-## Planned layout (Week 9+)
+**[design-preview/index.html](design-preview/index.html)** — static mockup from the manager Figma template. Open in any browser.
 
-```
-frontend/
-├── chatbot-onboarding/   # React + Vite — Onboarding tab (live chat)
-│   └── src/
-│       └── components/
-│           └── ChatInterface.tsx
-└── g3-test/              # HTML test bench for NBQ + Change Risk (Week 5–6)
-```
+## React application (Week 9)
 
-## Week 2 design decisions
+Full Vite + React integration from the Figma export is scheduled for Week 9:
 
-- **Onboarding tab only** for the live chatbot (not Dashboard / Documentation / Manager)  
-- Proxy `/api` → `http://localhost:8000`  
-- Display answer mode (full AI vs fallback) and document sources (US-07, US-13)
+- `frontend/chatbot-onboarding/` — live Onboarding tab  
+- Proxy to FastAPI `/chat`  
+- shadcn/ui components from template  
 
-See [../docs/developer/ARCHITECTURE.md](../docs/developer/ARCHITECTURE.md).
+See [../docs/design/FIGMA_TEMPLATE_REVIEW.md](../docs/design/FIGMA_TEMPLATE_REVIEW.md).
