@@ -3,7 +3,7 @@
 **Project:** Group 3 AMS Algorithmic Intelligence Engine  
 **Week:** 3 of 11 — Backend foundation & minimal chat (**in progress**)  
 **Team:** Hugo Davion & Axel Brazeau  
-**Repository:** https://github.com/hodncgi/AMS
+**Repository:** https://github.com/AMSNextGen25-26/chatbot-AMS
 
 ## Executive summary
 

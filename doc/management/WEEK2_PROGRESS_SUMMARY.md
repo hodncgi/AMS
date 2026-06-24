@@ -3,7 +3,7 @@
 **Project:** Group 3 AMS Algorithmic Intelligence Engine  
 **Week:** 2 of 11 — Architecture & API design (**complete**)  
 **Team:** Hugo Davion & Axel Brazeau  
-**Repository:** https://github.com/hodncgi/AMS
+**Repository:** https://github.com/AMSNextGen25-26/chatbot-AMS
 
 ## Executive summary
 

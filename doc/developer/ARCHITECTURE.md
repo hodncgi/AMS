@@ -150,7 +150,7 @@ sequenceDiagram
 | Local LLM | LM Studio + Mistral 7B Instruct |
 | RAG | Keyword search (default); semantic optional v2 |
 | Frontend | React, TypeScript, Vite, Tailwind (Figma template) |
-| Repository | GitHub — https://github.com/hodncgi/AMS |
+| Repository | GitHub — https://github.com/AMSNextGen25-26/chatbot-AMS |
 
 See [AI.md](AI.md) for stack comparison and LM Studio setup.
 

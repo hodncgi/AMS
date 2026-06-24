@@ -2,7 +2,7 @@
 
 **Current status: Week 3 in progress** (Week 2 complete)  
 **Authors:** Hugo Davion & Axel Brazeau — Group 3  
-**Repository:** https://github.com/hodncgi/AMS
+**Repository:** https://github.com/AMSNextGen25-26/chatbot-AMS
 
 Group 3 algorithmic intelligence engine for AMS intake — **11-week roadmap** (8 core + 3 stabilization). **Week 2** (architecture & API design) is complete. **Week 3** focuses on the first runnable backend: `GET /health` and minimal `POST /chat` (Mistral direct).
 
