@@ -4,13 +4,13 @@
 
 **Repository role:** AMS is the **public roadmap** — week-by-week progress for managers. The full POC and complete documentation live in [AMSChatBot](https://github.com/hodncgi/AMSChatBot).
 
-**Current project week:** 3 of 11
+**Current project week:** 3 of 11 (**in progress** — Week 2 complete)
 
 ## Quick navigation
 
 | I need to… | Go to |
 |------------|-------|
-| **Present Week 3 to management** | [management/WEEK3_PROGRESS_SUMMARY.md](management/WEEK3_PROGRESS_SUMMARY.md) |
+| **Present Week 3 progress to management** | [management/WEEK3_PROGRESS_SUMMARY.md](management/WEEK3_PROGRESS_SUMMARY.md) |
 | **Week-by-week progress summaries** | [management/](management/) |
 | **Formal user stories + roadmap (PDF)** | [deliverables/](deliverables/) |
 | **Install and run the backend** | [developer/SETUP.md](developer/SETUP.md) |

@@ -1,4 +1,4 @@
-# Backend — Week 3 (FastAPI + health + minimal chat)
+# Backend — Week 3 in progress (FastAPI + health + minimal chat)
 
 FastAPI backend on port **8000** with **`GET /health`** and **`POST /chat`** (Mistral direct, no RAG). Algorithms and knowledge base follow Weeks 5–7.
 

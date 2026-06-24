@@ -1,7 +1,7 @@
 # Architecture — Group 3 AI Engine
 
 **Document type:** Architecture note (Week 2 deliverable)  
-**Status:** Week 3 — `/health` and minimal `/chat` live  
+**Status:** Week 3 in progress — `/health` and minimal `/chat` under delivery  
 **Authors:** Hugo Davion & Axel Brazeau — Group 3
 
 ## 1. Purpose

@@ -42,7 +42,7 @@ Full contract: [../developer/API.md](../developer/API.md) and [../developer/open
 
 | Owner | Action | Due |
 |-------|--------|-----|
-| G3 | FastAPI + `/health` + minimal `/chat` | Week 3 ✓ |
+| G3 | FastAPI + `/health` + minimal `/chat` | Week 3 (in progress) |
 | G3 | Share OpenAPI draft file with G2 | Week 2 ✓ |
 | G2 | Return comments on JSON contracts | Week 3 |
 | G3 | Update CORS when G2 URL known | Before integration test |
