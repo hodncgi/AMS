@@ -1,34 +1,72 @@
-# Setup — Week 2 (LM Studio readiness)
+# Setup — Week 3 (backend + LM Studio)
 
-At the end of Week 2, we have **LM Studio installed and Mistral ready** on the development machine. Backend and frontend setup will be added to this repository from Week 3 onward.
+Week 3 adds the **FastAPI backend** on port 8000. LM Studio (Week 2) remains required for full `/health` AI status.
 
 ---
 
-## Prerequisites (Week 2)
+## Prerequisites
 
 | Tool | Version | Purpose |
 |------|---------|---------|
+| Python | 3.10+ | FastAPI backend |
 | LM Studio | Latest | Local Mistral inference |
 | Mistral 7B Instruct | GGUF | Recommended chat model |
 
-Python 3.10+ and Node.js 18+ will be required from Weeks 3 and 9 respectively.
+Node.js 18+ will be required from Week 9 (React UI).
 
 ---
 
-## LM Studio installation
+## 1. LM Studio (from Week 2)
 
 1. Download [LM Studio](https://lmstudio.ai/) and open the desktop app.  
-2. Left sidebar → **My Models** → download **Mistral 7B Instruct v0.3** via **Discover** if not present.  
-3. Click the model to **load** it into memory.  
-4. Open **Developer** → click **Start Server** (top-left) on port **1234**.
-
-## Verify (Week 2 done criteria)
+2. Load **Mistral 7B Instruct v0.3** into memory.  
+3. **Developer** → **Start Server** on port **1234**.
 
 ```powershell
 curl http://localhost:1234/v1/models
 ```
 
-You should see a JSON list including the Mistral model id (e.g. `mistral`).
+---
+
+## 2. Backend (Week 3)
+
+From the repository root:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn main:app --reload --app-dir backend
+```
+
+Optional: copy `backend/.env.example` to `backend/.env` to override LM Studio URL or model id.
+
+### Verify
+
+```powershell
+curl http://localhost:8000/health
+```
+
+Expected shape:
+
+```json
+{
+  "api": "online",
+  "ai": {
+    "lm_studio": { "status": "online", "model": "mistral" },
+    "rag": { "enabled": false, "method": "keyword", "chunks_indexed": 0 }
+  },
+  "fallback_enabled": true
+}
+```
+
+Interactive docs: http://localhost:8000/docs
+
+### Tests
+
+```powershell
+pytest tests/ -v
+```
 
 ---
 
@@ -36,9 +74,9 @@ You should see a JSON list including the Mistral model id (e.g. `mistral`).
 
 | Week | Task |
 |------|------|
-| 3 | `pip install fastapi uvicorn` — backend on port 8000 |
-| 6 | Knowledge base files in `backend/data/` |
-| 7–8 | Connect backend to LM Studio for `/chat` |
+| 4–5 | `POST /nbq/next`, `POST /change-risk` |
+| 6–7 | Knowledge base files in `backend/data/` |
+| 8 | Connect `/chat` to LM Studio + RAG |
 | 9 | `npm install` — React onboarding UI on port 3000 |
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for the full plan.

@@ -1,12 +1,13 @@
-# Management documentation (Week 2)
+# Management documentation
 
-At end of Week 2, **Phase A (Scoping & Design)** is complete.
+**Phase A (Scoping & Design)** — complete (Week 2).
 
 | File | Purpose |
 |------|---------|
 | [progress/01_Phase_A_Scoping_Design.pdf](progress/01_Phase_A_Scoping_Design.pdf) | Phase A progress report |
+| [WEEK3_PROGRESS_SUMMARY.md](WEEK3_PROGRESS_SUMMARY.md) | Week 3 backend summary |
 
-Phase B report (Backend & NBQ) is scheduled for Week 3–4 when `/nbq/next` is implemented in this repository.
+Phase B report (Backend & NBQ) is scheduled for Week 4 when `/nbq/next` is implemented.
 
 ## Week 2 design artifacts (this repo)
 

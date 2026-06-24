@@ -1,7 +1,7 @@
 # Architecture — Group 3 AI Engine
 
-**Document type:** Architecture note (Week 2 deliverable)  
-**Status:** Approved for implementation starting Week 3  
+**Document type:** Architecture note  
+**Status:** Week 3 — FastAPI skeleton live; algorithms Weeks 4–8  
 **Authors:** Hugo Davion & Axel Brazeau — Group 3
 
 ## 1. Purpose
@@ -163,9 +163,9 @@ See [AI.md](AI.md) for stack comparison and LM Studio setup.
 - Change risk is **decision support** — AMS leads retain sign-off  
 - No merge into Group 2 site in v1 — REST integration only
 
-## 8. Next steps (Week 3)
+## 8. Next steps (Week 4)
 
-1. Initialize `backend/` with FastAPI skeleton  
-2. Implement `GET /health`  
-3. Enable CORS for frontend origin  
-4. Validate LM Studio connectivity from health check
+1. Implement `POST /nbq/next` in `algorithms.py`  
+2. Add NBQ unit tests  
+3. Wire NBQ route in `main.py`  
+4. Draft Phase B progress report (Backend & NBQ)

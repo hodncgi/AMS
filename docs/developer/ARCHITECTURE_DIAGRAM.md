@@ -1,6 +1,6 @@
-# Architecture diagrams (Week 2)
+# Architecture diagrams
 
-Visual reference for manager and Group 2 presentations. Implementation follows in Weeks 3–9.
+Visual reference for manager and Group 2 presentations. **`GET /health` is live from Week 3**; remaining routes follow Weeks 4–9.
 
 ## System context
 
