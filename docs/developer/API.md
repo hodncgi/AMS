@@ -1,9 +1,11 @@
 # API Contract — Draft for Group 2
 
 **Document type:** API contract draft (Week 2 deliverable)  
-**Status:** Partial — `/health` implemented (Week 3); other routes Weeks 4–8  
-**Base URL:** `http://localhost:8000`  
-**OpenAPI:** `http://localhost:8000/docs`
+**Status:** Draft — **not implemented** until Weeks 3–8  
+**Base URL (planned):** `http://localhost:8000`  
+**OpenAPI (planned):** `http://localhost:8000/docs`
+
+Schedule: see [ROADMAP.md](ROADMAP.md).
 
 This document defines the JSON contracts Group 2 will use to integrate the G3 engine. Implementation schedule is noted per endpoint.
 
@@ -13,11 +15,11 @@ This document defines the JSON contracts Group 2 will use to integrate the G3 en
 
 | Route | Week | Status |
 |-------|------|--------|
-| `GET /health` | 3 | **Implemented** |
-| `POST /nbq/next` | 4 | Planned |
+| `GET /health` | 3 | Planned |
+| `POST /chat` | 3 (minimal) → 7 | Planned |
+| `POST /nbq/next` | 5 | Planned |
 | `POST /change-risk` | 5 | Planned |
-| `POST /chat` | 8 | Planned |
-| `GET /g3-test` | 5–6 | Planned |
+| `GET /g3-test` | 8 | Planned |
 
 ---
 
@@ -25,7 +27,7 @@ This document defines the JSON contracts Group 2 will use to integrate the G3 en
 
 Check API and AI subsystem status.
 
-**Response:**
+**Response (planned):**
 ```json
 {
   "api": "online",
@@ -131,7 +133,7 @@ Onboarding conversation with history and RAG context.
 
 ---
 
-## CORS (Week 3)
+## CORS (planned Week 3)
 
 Allowed origins for POC:
 

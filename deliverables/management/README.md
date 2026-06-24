@@ -1,10 +1,10 @@
-# Deliverables — Week 2 planning pack
+# Management deliverables (English)
+
+User stories and 11-week roadmap for Group 3 AMS intake platform.
 
 | File | Description |
 |------|-------------|
-| `G3_User_Stories.pdf` | User stories (draft v0.1 — Weeks 1–2) |
-| `G3_11_Week_Roadmap.pdf` | Full 11-week plan |
+| `G3_User_Stories.pdf` | User stories US-01 to US-16 |
+| `G3_11_Week_Roadmap.pdf` | **Weeks 1–8 core** + **Weeks 9–11 stabilization** |
 
-**Week 2 focus stories:** US-08 (API documentation), US-12 (assistant scope design).
-
-Additional deliverables will be added to this repository as each roadmap week is completed.
+Authors: Hugo Davion & Axel Brazeau — Group 3

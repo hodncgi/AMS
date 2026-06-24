@@ -1,29 +1,10 @@
 # AMS — Group 3 AI Engine
 
-**Current status: Week 3 — Backend skeleton & health check**  
+**Current status: Week 2 complete — ready for Week 3**  
 **Authors:** Hugo Davion & Axel Brazeau — Group 3  
 **Repository:** https://github.com/hodncgi/AMS
 
-We are building the Group 3 algorithmic intelligence engine for AMS intake following the 11-week roadmap. Week 3 delivers the **first runnable FastAPI backend** with **`GET /health`**, LM Studio probe, CORS, and pytest.
-
-## Week 3 deliverables (completed)
-
-| Deliverable | Location |
-|-------------|----------|
-| FastAPI skeleton + `/health` | [backend/](backend/) |
-| Run & test instructions | [docs/developer/SETUP.md](docs/developer/SETUP.md), [backend/README.md](backend/README.md) |
-| Pytest suite | [tests/test_health.py](tests/test_health.py) |
-| Manager Week 3 summary | [docs/management/WEEK3_PROGRESS_SUMMARY.md](docs/management/WEEK3_PROGRESS_SUMMARY.md) |
-
-## Quick start
-
-```powershell
-pip install -r requirements.txt
-uvicorn main:app --reload --app-dir backend
-curl http://localhost:8000/health
-```
-
-OpenAPI UI: http://localhost:8000/docs
+We are building the Group 3 algorithmic intelligence engine for AMS intake following the **11-week roadmap** (8 weeks core + 3 weeks stabilization). Week 2 delivered **design, architecture, API contracts, Figma analysis**, and a **static UI preview**. **Week 3** starts the FastAPI backend with **`GET /health`** and **minimal `POST /chat`**.
 
 ## Week 2 deliverables (completed)
 
@@ -31,12 +12,22 @@ OpenAPI UI: http://localhost:8000/docs
 |-------------|----------|
 | Architecture note + diagrams | [docs/developer/ARCHITECTURE.md](docs/developer/ARCHITECTURE.md), [ARCHITECTURE_DIAGRAM.md](docs/developer/ARCHITECTURE_DIAGRAM.md) |
 | API contract + OpenAPI draft | [docs/developer/API.md](docs/developer/API.md), [openapi-draft.yaml](docs/developer/openapi-draft.yaml) |
-| Figma template review + static preview | [docs/design/](docs/design/), [frontend/design-preview/](frontend/design-preview/) |
+| Roadmap (8+3) | [docs/developer/ROADMAP.md](docs/developer/ROADMAP.md) |
+| G2 workshop notes | [docs/management/G2_API_WORKSHOP_NOTES.md](docs/management/G2_API_WORKSHOP_NOTES.md) |
+| Figma template + static preview | [docs/design/](docs/design/), [frontend/design-preview/](frontend/design-preview/) |
+| Manager Week 2 summary | [docs/management/WEEK2_PROGRESS_SUMMARY.md](docs/management/WEEK2_PROGRESS_SUMMARY.md) |
 | User stories & roadmap PDFs | [deliverables/management/](deliverables/management/) |
 
-## Week 4 next
+## Quick demo (Week 2)
 
-`POST /nbq/next` — deterministic next-best-question algorithm.
+1. Open **`frontend/design-preview/index.html`** — Figma shell with tabs  
+2. Show **`docs/developer/ARCHITECTURE_DIAGRAM.md`**  
+3. Paste **`docs/developer/openapi-draft.yaml`** into [Swagger Editor](https://editor.swagger.io/)  
+4. Optional: `curl http://localhost:1234/v1/models` — LM Studio ready  
+
+## Week 3 next
+
+FastAPI + `GET /health` + minimal `POST /chat` (Mistral direct, no RAG).
 
 ## Documentation
 

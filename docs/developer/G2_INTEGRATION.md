@@ -1,8 +1,17 @@
 # Group 2 Integration — Draft (Week 2)
 
-**Status:** Planning only — Group 2 site API routes pending.
+**Status:** Planning only — collaborating team **not yet in contact**.
 
-G3 delivers the algorithmic engine; Group 2 owns the risk analysis site UI.
+See [ROADMAP.md](ROADMAP.md) for the full timeline.
+
+## Integration milestones
+
+| Week | Milestone |
+|------|-----------|
+| **2** | G3 publishes API contract draft (this repo) |
+| **6** | Receive G2 API routes; map to G3 endpoints |
+| **8** | G3 contracts frozen at v1.0 |
+| **10** | Live G2 ↔ G3 integration testing |
 
 ## Planned integration model
 
@@ -28,18 +37,14 @@ flowchart LR
     D --> H
 ```
 
-## Contracts
+## G2 routes — pending (Week 6 handover)
 
-See [API.md](API.md) — draft JSON shapes for Group 2 review this week.
+| G2 Route | Method | Maps to G3 |
+|----------|--------|------------|
+| _TBD_ | _TBD_ | _TBD_ |
 
-## Information needed from Group 2
+Full contract: [API.md](API.md), [openapi-draft.yaml](openapi-draft.yaml).
 
-1. Base URL and authentication  
-2. CORS / allowed origins for production  
-3. Field mapping for change risk and NBQ forms  
-4. Timeline for integration testing (roadmap Week 10)
+## Decision-support scope
 
-## Scope
-
-- No site merge in v1 — REST calls only  
-- Change risk scores are decision support; AMS leads retain sign-off
+Change risk scores are **decision support only** — AMS leads retain final sign-off.

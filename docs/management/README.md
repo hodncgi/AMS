@@ -1,19 +1,20 @@
 # Management documentation
 
-**Phase A (Scoping & Design)** — complete (Week 2).
+**Phase A (Scoping & Design)** — complete at end of Week 2.
 
 | File | Purpose |
 |------|---------|
+| [WEEK2_PROGRESS_SUMMARY.md](WEEK2_PROGRESS_SUMMARY.md) | **Week 2 executive summary** |
 | [progress/01_Phase_A_Scoping_Design.pdf](progress/01_Phase_A_Scoping_Design.pdf) | Phase A progress report |
-| [WEEK3_PROGRESS_SUMMARY.md](WEEK3_PROGRESS_SUMMARY.md) | Week 3 backend summary |
 
-Phase B report (Backend & NBQ) is scheduled for Week 4 when `/nbq/next` is implemented.
+Phase B (Backend & early chat) starts **Week 3**.
 
-## Week 2 design artifacts (this repo)
+## Week 2 design artifacts
 
+- [../developer/ROADMAP.md](../developer/ROADMAP.md)  
 - [../developer/ARCHITECTURE.md](../developer/ARCHITECTURE.md)  
 - [../developer/API.md](../developer/API.md)
 
 ## Deliverables
 
-[../../deliverables/management/](../../deliverables/management/) — user stories and 11-week roadmap.
+[../../deliverables/management/](../../deliverables/management/) — user stories + 11-week roadmap PDFs

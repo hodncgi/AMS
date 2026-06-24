@@ -1,6 +1,6 @@
 # Architecture diagrams
 
-Visual reference for manager and Group 2 presentations. **`GET /health` is live from Week 3**; remaining routes follow Weeks 4–9.
+Visual reference for manager and Group 2 presentations. Implementation follows [ROADMAP.md](ROADMAP.md) from Week 3 onward.
 
 ## System context
 
@@ -71,11 +71,12 @@ flowchart LR
 
 | Weeks | Layer |
 |-------|--------|
-| 1–2 | Design, API contract, Figma analysis, LM Studio |
-| 3 | FastAPI + `/health` |
-| 4–5 | NBQ + Change Risk |
-| 6–7 | Knowledge base + RAG |
-| 8 | `/chat` |
-| 9 | Figma → React Onboarding tab |
+| 1–2 | Design, API contract, Figma, LM Studio — **done** |
+| 3–4 | FastAPI, `/health`, minimal `/chat`, HTML chat UI |
+| 5 | NBQ + Change Risk |
+| 6 | G2 API route alignment |
+| 7 | Knowledge base + RAG + chat quality |
+| 8 | React Onboarding tab — **POC complete** |
+| 9–11 | Stabilization, G2 live integration, final delivery |
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for narrative detail.

@@ -1,7 +1,7 @@
 # Architecture — Group 3 AI Engine
 
-**Document type:** Architecture note  
-**Status:** Week 3 — FastAPI skeleton live; algorithms Weeks 4–8  
+**Document type:** Architecture note (Week 2 deliverable)  
+**Status:** Approved — implementation from Week 3 per [ROADMAP.md](ROADMAP.md)  
 **Authors:** Hugo Davion & Axel Brazeau — Group 3
 
 ## 1. Purpose
@@ -35,7 +35,7 @@ flowchart TB
         LM[(LM Studio :1234<br/>Mistral 7B)]
     end
 
-    subgraph UI["React UI — localhost:3000 (Week 9+)"]
+    subgraph UI["React UI — localhost:3000 (Week 8)"]
         Onb[Onboarding tab<br/>live chat]
         Demo[Dashboard · Docs · Manager<br/>static Figma demo]
     end
@@ -71,32 +71,29 @@ See also [ARCHITECTURE_DIAGRAM.md](ARCHITECTURE_DIAGRAM.md) for sequence and dep
 - Delegates algorithms to `algorithms.py`, chat to `ai_service.py`  
 - OpenAPI at `/docs` for Group 2
 
-### 4.2 Algorithms (`algorithms.py` — Week 4–5)
+### 4.2 Algorithms (`algorithms.py` — Week 5)
 
-**NBQ:** weighted question pool; sector boost (e.g. Healthcare + security +50).  
-**Change Risk:** `score = max(0, base_criticality - test_days × 5)`.
+**NBQ** and **Change Risk** ship in the same week (compressed roadmap).
 
-### 4.3 Knowledge & RAG (Week 6–7)
+### 4.3 Knowledge & RAG (Week 7)
 
 - Curated topics + `catalog.json` chunks (Week 6)  
 - Keyword retrieval default; optional semantic embeddings (v2)  
 - Future: relational database (Group 1) per US-15 / US-16
 
-### 4.4 AI service (Week 7–8)
+### 4.4 AI service (Week 3 minimal → Week 7 full)
 
-- Build system prompt + retrieved context  
-- Call LM Studio OpenAI-compatible API  
-- Parse JSON reply with `reply` + `sources`  
-- Inject live algorithm context for risk/NBQ questions
+- Week 3: direct Mistral call for `POST /chat`  
+- Week 7: RAG injection, fallback, algorithm context
 
-### 4.5 Onboarding UI (Week 9)
+### 4.5 Onboarding UI (Week 4 HTML → Week 8 React)
 
-- Single live chat on **Onboarding** tab  
-- Show sources, answer mode, pipeline status (US-07, US-13)
+- Week 4: simple HTML chat wired to API  
+- Week 8: Figma → React on **Onboarding** tab only
 
 ## 5. Data flows
 
-### NBQ request (Week 4+)
+### NBQ request (Week 5+)
 
 ```mermaid
 sequenceDiagram
@@ -127,7 +124,7 @@ sequenceDiagram
     API-->>C: JSON response
 ```
 
-### Chat request (Week 8+)
+### Chat request (Week 3 minimal → Week 7 RAG)
 
 ```mermaid
 sequenceDiagram
@@ -163,9 +160,9 @@ See [AI.md](AI.md) for stack comparison and LM Studio setup.
 - Change risk is **decision support** — AMS leads retain sign-off  
 - No merge into Group 2 site in v1 — REST integration only
 
-## 8. Next steps (Week 4)
+## 8. Next steps (Week 3)
 
-1. Implement `POST /nbq/next` in `algorithms.py`  
-2. Add NBQ unit tests  
-3. Wire NBQ route in `main.py`  
-4. Draft Phase B progress report (Backend & NBQ)
+1. Initialize `backend/` with FastAPI skeleton  
+2. Implement `GET /health` and minimal `POST /chat`  
+3. Enable CORS for frontend origin  
+4. Add pytest and run instructions in SETUP.md
