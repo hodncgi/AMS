@@ -30,4 +30,4 @@ flowchart LR
     Onb -->|proxy /api| Chat
 ```
 
-See [../docs/developer/ROADMAP.md](../docs/developer/ROADMAP.md) and [../docs/design/FIGMA_TEMPLATE_REVIEW.md](../docs/design/FIGMA_TEMPLATE_REVIEW.md).
+See [../doc/developer/ROADMAP.md](../doc/developer/ROADMAP.md) and [../doc/design/FIGMA_TEMPLATE_REVIEW.md](../doc/design/FIGMA_TEMPLATE_REVIEW.md).

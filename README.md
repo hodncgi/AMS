@@ -6,13 +6,15 @@
 
 Group 3 algorithmic intelligence engine for AMS intake — **11-week roadmap** (8 core + 3 stabilization). Week 3 delivers the **first runnable API**: `GET /health` and minimal `POST /chat` (Mistral direct).
 
+> The full POC lives in [AMSChatBot](https://github.com/hodncgi/AMSChatBot). **All documentation for this repo is in `doc/`.**
+
 ## Week 3 deliverables (completed)
 
 | Deliverable | Location |
 |-------------|----------|
 | FastAPI + `/health` + `/chat` | [backend/](backend/) |
-| Setup & tests | [docs/developer/SETUP.md](docs/developer/SETUP.md), [tests/test_week3.py](tests/test_week3.py) |
-| Manager summary | [docs/management/WEEK3_PROGRESS_SUMMARY.md](docs/management/WEEK3_PROGRESS_SUMMARY.md) |
+| Setup & tests | [doc/developer/SETUP.md](doc/developer/SETUP.md), [tests/test_week3.py](tests/test_week3.py) |
+| Manager summary | [doc/management/WEEK3_PROGRESS_SUMMARY.md](doc/management/WEEK3_PROGRESS_SUMMARY.md) |
 
 ## Quick start
 
@@ -30,4 +32,17 @@ HTML chat UI connected to `POST /chat`.
 
 ## Documentation
 
-[docs/README.md](docs/README.md) · [docs/developer/ROADMAP.md](docs/developer/ROADMAP.md)
+**[doc/README.md](doc/README.md)** · [doc/developer/ROADMAP.md](doc/developer/ROADMAP.md)
+
+```
+AMS/
+├── README.md
+├── doc/                        # ← all documentation (manager + developer)
+│   ├── developer/
+│   ├── design/
+│   ├── management/
+│   └── deliverables/
+├── backend/
+├── frontend/
+└── tests/
+```

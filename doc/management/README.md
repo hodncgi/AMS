@@ -1,5 +1,7 @@
 # Management documentation
 
+Index: [../README.md](../README.md)
+
 | File | Purpose |
 |------|---------|
 | [WEEK3_PROGRESS_SUMMARY.md](WEEK3_PROGRESS_SUMMARY.md) | **Week 3 — backend & minimal chat** |

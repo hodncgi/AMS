@@ -1,6 +1,6 @@
 # Eleven-week roadmap — Group 3 AMS Engine
 
-Aligned with `deliverables/management/G3_11_Week_Roadmap.pdf`.
+Aligned with `doc/deliverables/G3_11_Week_Roadmap.pdf`.
 
 **Current position:** **Week 3 complete** — backend + minimal chat; **Week 4** = HTML chat UI.
 

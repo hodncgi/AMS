@@ -15,17 +15,17 @@ The agreed roadmap compresses core delivery into **Weeks 1–8** (chat-first fro
 
 | # | Deliverable | Evidence in repo |
 |---|-------------|------------------|
-| 1 | Architecture note | `docs/developer/ARCHITECTURE.md` |
-| 2 | Architecture diagrams | `docs/developer/ARCHITECTURE_DIAGRAM.md` |
-| 3 | API contract draft + OpenAPI | `docs/developer/API.md`, `openapi-draft.yaml` |
-| 4 | 11-week roadmap (8+3) | `docs/developer/ROADMAP.md`, `deliverables/management/G3_11_Week_Roadmap.pdf` |
-| 5 | G2 workshop notes | `docs/management/G2_API_WORKSHOP_NOTES.md` |
-| 6 | Stack decision | `docs/developer/STACK_DECISION.md` |
-| 7 | LM Studio ready | `docs/developer/SETUP.md` |
-| 8 | Chatbot knowledge scope | `docs/developer/KNOWLEDGE_SCOPE.md` |
-| 9 | Figma template review | `docs/design/FIGMA_TEMPLATE_REVIEW.md` |
+| 1 | Architecture note | `doc/developer/ARCHITECTURE.md` |
+| 2 | Architecture diagrams | `doc/developer/ARCHITECTURE_DIAGRAM.md` |
+| 3 | API contract draft + OpenAPI | `doc/developer/API.md`, `openapi-draft.yaml` |
+| 4 | 11-week roadmap (8+3) | `doc/developer/ROADMAP.md`, `doc/deliverables/G3_11_Week_Roadmap.pdf` |
+| 5 | G2 workshop notes | `doc/management/G2_API_WORKSHOP_NOTES.md` |
+| 6 | Stack decision | `doc/developer/STACK_DECISION.md` |
+| 7 | LM Studio ready | `doc/developer/SETUP.md` |
+| 8 | Chatbot knowledge scope | `doc/developer/KNOWLEDGE_SCOPE.md` |
+| 9 | Figma template review | `doc/design/FIGMA_TEMPLATE_REVIEW.md` |
 | 10 | Static design preview | `frontend/design-preview/index.html` |
-| 11 | User stories PDF | `deliverables/management/G3_User_Stories.pdf` |
+| 11 | User stories PDF | `doc/deliverables/G3_User_Stories.pdf` |
 
 ## What to demo in a 20-minute review
 

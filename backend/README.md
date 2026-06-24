@@ -37,4 +37,4 @@ flowchart TB
     ROOT --> KB[knowledge_base.py — Week 7]
 ```
 
-See [../docs/developer/SETUP.md](../docs/developer/SETUP.md).
+See [../doc/developer/SETUP.md](../doc/developer/SETUP.md).

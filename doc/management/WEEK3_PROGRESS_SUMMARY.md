@@ -18,7 +18,7 @@ Week 3 delivers the **first runnable backend**: FastAPI with **`GET /health`**, 
 | 3 | `POST /chat` (minimal) | Mistral direct; fallback message if offline |
 | 4 | CORS | `localhost:3000` |
 | 5 | Pytest | `tests/test_week3.py` |
-| 6 | Run instructions | `docs/developer/SETUP.md`, `backend/README.md` |
+| 6 | Run instructions | `doc/developer/SETUP.md`, `backend/README.md` |
 
 ## What to demo (15 min)
 
