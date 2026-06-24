@@ -6,7 +6,7 @@
 
 Group 3 algorithmic intelligence engine for AMS intake — **11-week roadmap** (8 core + 3 stabilization). **Week 2** (architecture & API design) is complete. **Week 3** focuses on the first runnable backend: `GET /health` and minimal `POST /chat` (Mistral direct).
 
-> The full POC lives in [AMSChatBot](https://github.com/hodncgi/AMSChatBot). **All documentation for this repo is in `doc/`.**
+**All project documentation is in [`doc/`](doc/).**
 
 ## Week 2 deliverables (complete)
 

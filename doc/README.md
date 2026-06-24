@@ -2,7 +2,7 @@
 
 **Single entry point** for all project documentation. Managers start in [management/](management/); developers in [developer/](developer/).
 
-**Repository role:** AMS is the **public roadmap** — week-by-week progress for managers. The full POC and complete documentation live in [AMSChatBot](https://github.com/hodncgi/AMSChatBot).
+**Repository role:** AMS is the **Group 3 delivery repository** — week-by-week code, documentation, and progress for managers and stakeholders.
 
 **Current project week:** 3 of 11 (**in progress** — Week 2 complete)
 
