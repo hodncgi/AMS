@@ -1,34 +1,33 @@
 # AMS — Group 3 AI Engine
 
-**Current status: Week 2 complete — ready for Week 3**  
+**Current status: Week 3 — Backend & minimal chat**  
 **Authors:** Hugo Davion & Axel Brazeau — Group 3  
 **Repository:** https://github.com/hodncgi/AMS
 
-We are building the Group 3 algorithmic intelligence engine for AMS intake following the **11-week roadmap** (8 weeks core + 3 weeks stabilization). Week 2 delivered **design, architecture, API contracts, Figma analysis**, and a **static UI preview**. **Week 3** starts the FastAPI backend with **`GET /health`** and **minimal `POST /chat`**.
+Group 3 algorithmic intelligence engine for AMS intake — **11-week roadmap** (8 core + 3 stabilization). Week 3 delivers the **first runnable API**: `GET /health` and minimal `POST /chat` (Mistral direct).
 
-## Week 2 deliverables (completed)
+## Week 3 deliverables (completed)
 
 | Deliverable | Location |
 |-------------|----------|
-| Architecture note + diagrams | [docs/developer/ARCHITECTURE.md](docs/developer/ARCHITECTURE.md), [ARCHITECTURE_DIAGRAM.md](docs/developer/ARCHITECTURE_DIAGRAM.md) |
-| API contract + OpenAPI draft | [docs/developer/API.md](docs/developer/API.md), [openapi-draft.yaml](docs/developer/openapi-draft.yaml) |
-| Roadmap (8+3) | [docs/developer/ROADMAP.md](docs/developer/ROADMAP.md) |
-| G2 workshop notes | [docs/management/G2_API_WORKSHOP_NOTES.md](docs/management/G2_API_WORKSHOP_NOTES.md) |
-| Figma template + static preview | [docs/design/](docs/design/), [frontend/design-preview/](frontend/design-preview/) |
-| Manager Week 2 summary | [docs/management/WEEK2_PROGRESS_SUMMARY.md](docs/management/WEEK2_PROGRESS_SUMMARY.md) |
-| User stories & roadmap PDFs | [deliverables/management/](deliverables/management/) |
+| FastAPI + `/health` + `/chat` | [backend/](backend/) |
+| Setup & tests | [docs/developer/SETUP.md](docs/developer/SETUP.md), [tests/test_week3.py](tests/test_week3.py) |
+| Manager summary | [docs/management/WEEK3_PROGRESS_SUMMARY.md](docs/management/WEEK3_PROGRESS_SUMMARY.md) |
 
-## Quick demo (Week 2)
+## Quick start
 
-1. Open **`frontend/design-preview/index.html`** — Figma shell with tabs  
-2. Show **`docs/developer/ARCHITECTURE_DIAGRAM.md`**  
-3. Paste **`docs/developer/openapi-draft.yaml`** into [Swagger Editor](https://editor.swagger.io/)  
-4. Optional: `curl http://localhost:1234/v1/models` — LM Studio ready  
+```powershell
+pip install -r requirements.txt
+uvicorn main:app --reload --app-dir backend
+curl http://localhost:8000/health
+```
 
-## Week 3 next
+API docs: http://localhost:8000/docs
 
-FastAPI + `GET /health` + minimal `POST /chat` (Mistral direct, no RAG).
+## Week 4 next
+
+HTML chat UI connected to `POST /chat`.
 
 ## Documentation
 
-[docs/README.md](docs/README.md)
+[docs/README.md](docs/README.md) · [docs/developer/ROADMAP.md](docs/developer/ROADMAP.md)

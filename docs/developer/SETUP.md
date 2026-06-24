@@ -1,48 +1,65 @@
-# Setup — Week 2 (LM Studio readiness)
+# Setup — Week 3 (backend + LM Studio)
 
-At the end of Week 2, we have **LM Studio installed and Mistral ready** on the development machine. Backend and frontend setup will be added from **Week 3** onward.
-
-See [ROADMAP.md](ROADMAP.md) for the full 11-week plan.
+Week 3 adds the **FastAPI backend** on port 8000 with `/health` and minimal `/chat`. See [ROADMAP.md](ROADMAP.md).
 
 ---
 
-## Prerequisites (Week 2)
+## Prerequisites
 
 | Tool | Version | Purpose |
 |------|---------|---------|
-| LM Studio | Latest | Local Mistral inference |
-| Mistral 7B Instruct | GGUF | Recommended chat model |
-
-Python 3.10+ and Node.js 18+ will be required from Weeks **3** and **8** respectively.
+| Python | 3.10+ | FastAPI backend |
+| LM Studio | Latest | Mistral for `/chat` |
 
 ---
 
-## LM Studio installation
+## 1. LM Studio
 
-1. Download [LM Studio](https://lmstudio.ai/) and open the desktop app.  
-2. Left sidebar → **My Models** → download **Mistral 7B Instruct v0.3** via **Discover** if not present.  
-3. Click the model to **load** it into memory.  
-4. Open **Developer** → click **Start Server** (top-left) on port **1234**.
-
-## Verify (Week 2 done criteria)
+1. Load **Mistral 7B Instruct** → **Developer** → **Start Server** on port **1234**.
 
 ```powershell
 curl http://localhost:1234/v1/models
 ```
 
-You should see a JSON list including the Mistral model id (e.g. `mistral`).
+---
+
+## 2. Backend
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn main:app --reload --app-dir backend
+```
+
+Optional: copy `backend/.env.example` to `backend/.env`.
+
+### Verify
+
+```powershell
+curl http://localhost:8000/health
+
+curl -X POST http://localhost:8000/chat ^
+  -H "Content-Type: application/json" ^
+  -d "{\"messages\":[{\"role\":\"user\",\"content\":\"What is AMS intake?\"}]}"
+```
+
+Docs: http://localhost:8000/docs
+
+### Tests
+
+```powershell
+pytest tests/ -v
+```
 
 ---
 
-## Roadmap — upcoming setup steps
+## Upcoming
 
 | Week | Task |
 |------|------|
-| **3** | `pip install fastapi uvicorn` — backend on port 8000, `/health` + minimal `/chat` |
-| **4** | HTML chat page wired to API |
-| **5** | Algorithm endpoints |
-| **6** | G2 API route alignment |
-| **7** | Knowledge base in `backend/data/` |
-| **8** | `npm install` — React onboarding UI on port 3000 |
-
-See [ARCHITECTURE.md](ARCHITECTURE.md) for the full plan.
+| 4 | HTML chat UI |
+| 5 | NBQ + Change Risk |
+| 6 | G2 API alignment |
+| 7 | Knowledge base + RAG in chat |
+| 8 | React UI — POC complete |

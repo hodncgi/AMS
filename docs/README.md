@@ -1,35 +1,23 @@
 # Documentation — Group 3 AMS Engine
 
-**Current project week:** 2 of 11 complete — **starting Week 3**
+**Current project week:** 3 of 11
 
-## Manager — start here
-
-| Document | Purpose |
-|----------|---------|
-| **[management/WEEK2_PROGRESS_SUMMARY.md](management/WEEK2_PROGRESS_SUMMARY.md)** | **Week 2 executive summary & demo script** |
-| [management/G2_API_WORKSHOP_NOTES.md](management/G2_API_WORKSHOP_NOTES.md) | Group 2 alignment (contact pending) |
-| [management/progress/01_Phase_A_Scoping_Design.pdf](management/progress/01_Phase_A_Scoping_Design.pdf) | Phase A report |
-
-## Developer
+## Manager
 
 | Document | Purpose |
 |----------|---------|
-| [developer/ROADMAP.md](developer/ROADMAP.md) | **11-week plan (8 core + 3 stabilization)** |
-| [developer/ARCHITECTURE.md](developer/ARCHITECTURE.md) | Architecture note |
-| [developer/API.md](developer/API.md) | API contract draft |
-| [developer/SETUP.md](developer/SETUP.md) | LM Studio setup (backend from Week 3) |
+| **[management/WEEK3_PROGRESS_SUMMARY.md](management/WEEK3_PROGRESS_SUMMARY.md)** | **Week 3 demo script** |
+| [management/WEEK2_PROGRESS_SUMMARY.md](management/WEEK2_PROGRESS_SUMMARY.md) | Week 2 design summary |
 
-## Design
+## Developer — run the backend
 
 | Document | Purpose |
 |----------|---------|
-| [design/FIGMA_TEMPLATE_REVIEW.md](design/FIGMA_TEMPLATE_REVIEW.md) | Template analysis |
-| [../frontend/design-preview/index.html](../frontend/design-preview/index.html) | Static UI preview |
+| **[developer/SETUP.md](developer/SETUP.md)** | Install, run, test |
+| [../backend/README.md](../backend/README.md) | Backend quick start |
+| [developer/ROADMAP.md](developer/ROADMAP.md) | 11-week plan |
+| [developer/API.md](developer/API.md) | API contract |
 
-## Deliverables
+## Week 4 next
 
-[../deliverables/management/](../deliverables/management/) — user stories + 11-week roadmap PDFs
-
-## Week 3 next
-
-`backend/` FastAPI skeleton, `GET /health`, minimal `POST /chat`.
+HTML chat page + suggested questions.

@@ -1,7 +1,7 @@
 # Architecture — Group 3 AI Engine
 
 **Document type:** Architecture note (Week 2 deliverable)  
-**Status:** Approved — implementation from Week 3 per [ROADMAP.md](ROADMAP.md)  
+**Status:** Week 3 — `/health` and minimal `/chat` live  
 **Authors:** Hugo Davion & Axel Brazeau — Group 3
 
 ## 1. Purpose
@@ -160,9 +160,9 @@ See [AI.md](AI.md) for stack comparison and LM Studio setup.
 - Change risk is **decision support** — AMS leads retain sign-off  
 - No merge into Group 2 site in v1 — REST integration only
 
-## 8. Next steps (Week 3)
+## 8. Next steps (Week 4)
 
-1. Initialize `backend/` with FastAPI skeleton  
-2. Implement `GET /health` and minimal `POST /chat`  
-3. Enable CORS for frontend origin  
-4. Add pytest and run instructions in SETUP.md
+1. HTML chat page calling `POST /chat`  
+2. Suggested starter questions (US-02)  
+3. Basic AI mode indicator in UI  
+4. Update design-preview or new `frontend/chat-live/` shell

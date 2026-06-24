@@ -1,30 +1,40 @@
-# Backend — Week 2 (structure planned)
+# Backend — Week 3 (FastAPI + health + minimal chat)
 
-Backend implementation starts **Week 3** in this repository.
+FastAPI backend on port **8000** with **`GET /health`** and **`POST /chat`** (Mistral direct, no RAG). Algorithms and knowledge base follow Weeks 5–7.
 
-## Planned layout
+## Quick start
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn main:app --reload --app-dir backend
+```
+
+Verify:
+
+```powershell
+curl http://localhost:8000/health
+curl -X POST http://localhost:8000/chat -H "Content-Type: application/json" -d "{\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}"
+```
+
+OpenAPI: http://localhost:8000/docs
+
+## Tests
+
+```powershell
+pytest tests/ -v
+```
+
+## Layout
 
 ```mermaid
 flowchart TB
-    ROOT[backend/] --> MAIN[main.py — Week 3]
-    ROOT --> CFG[config.py — Week 3]
-    ROOT --> AI[ai_service.py — Week 3+]
+    ROOT[backend/] --> MAIN[main.py ✓ Week 3]
+    ROOT --> CFG[config.py ✓]
+    ROOT --> AI[ai_service.py — health + minimal chat ✓]
     ROOT --> ALG[algorithms.py — Week 5]
-    ROOT --> RAG[rag_service.py — Week 7]
     ROOT --> KB[knowledge_base.py — Week 7]
-    ROOT --> DATA[data/documents/ — Week 7]
 ```
 
-## Week 3 commitment
-
-- FastAPI on port **8000**
-- `GET /health` — API + LM Studio probe
-- `POST /chat` — Mistral direct (minimal, no RAG)
-- CORS for `localhost:3000`
-- Initial pytest
-
-See [../docs/developer/ROADMAP.md](../docs/developer/ROADMAP.md) and [../docs/developer/SETUP.md](../docs/developer/SETUP.md).
-
-## API contract
-
-[../docs/developer/API.md](../docs/developer/API.md)
+See [../docs/developer/SETUP.md](../docs/developer/SETUP.md).

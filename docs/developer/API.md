@@ -1,9 +1,9 @@
 # API Contract — Draft for Group 2
 
 **Document type:** API contract draft (Week 2 deliverable)  
-**Status:** Draft — **not implemented** until Weeks 3–8  
-**Base URL (planned):** `http://localhost:8000`  
-**OpenAPI (planned):** `http://localhost:8000/docs`
+**Status:** Partial — `/health` and minimal `/chat` implemented (Week 3)  
+**Base URL:** `http://localhost:8000`  
+**OpenAPI:** `http://localhost:8000/docs`
 
 Schedule: see [ROADMAP.md](ROADMAP.md).
 
@@ -15,8 +15,8 @@ This document defines the JSON contracts Group 2 will use to integrate the G3 en
 
 | Route | Week | Status |
 |-------|------|--------|
-| `GET /health` | 3 | Planned |
-| `POST /chat` | 3 (minimal) → 7 | Planned |
+| `GET /health` | 3 | **Implemented** |
+| `POST /chat` | 3 (minimal) → 7 | **Implemented** (Week 3: no RAG) |
 | `POST /nbq/next` | 5 | Planned |
 | `POST /change-risk` | 5 | Planned |
 | `GET /g3-test` | 8 | Planned |
@@ -27,7 +27,7 @@ This document defines the JSON contracts Group 2 will use to integrate the G3 en
 
 Check API and AI subsystem status.
 
-**Response (planned):**
+**Response:**
 ```json
 {
   "api": "online",
@@ -118,13 +118,13 @@ Onboarding conversation with history and RAG context.
 }
 ```
 
-**Response (planned):**
+**Response (Week 3 — minimal, no RAG yet):**
 ```json
 {
   "reply": "...",
-  "sources": ["AMS Intake Playbook"],
+  "sources": [],
   "mode": "mistral",
-  "retrieval_method": "keyword",
+  "retrieval_method": "none",
   "response_time_ms": 1200
 }
 ```
@@ -133,7 +133,7 @@ Onboarding conversation with history and RAG context.
 
 ---
 
-## CORS (planned Week 3)
+## CORS (Week 3)
 
 Allowed origins for POC:
 
