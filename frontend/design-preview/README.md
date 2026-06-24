@@ -21,6 +21,6 @@ No npm, no backend required.
 ## What this is not
 
 - Not connected to FastAPI or LM Studio (Weeks 8–9)  
-- Not the final React app (Week 9)
+- Not the final React app (Week 8)
 
 See [../../doc/design/FIGMA_TEMPLATE_REVIEW.md](../../doc/design/FIGMA_TEMPLATE_REVIEW.md).

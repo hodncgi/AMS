@@ -8,7 +8,7 @@
 
 | Layer | Selected | Implementation week |
 |-------|----------|---------------------|
-| Local LLM runtime | **LM Studio** (port 1234) | Week 2 (setup) / Week 7–8 (integration) |
+| Local LLM runtime | **LM Studio** (port 1234) | Week 2 (setup) · Week 3 (minimal `/chat`) · Week 7 (RAG + quality) |
 | Chat model | **Mistral 7B Instruct** (GGUF) | Week 2 (download) |
 | Retrieval | **Keyword RAG** (default) | Week 6–7 |
 | Semantic embeddings | Optional (v2) | Deferred |
@@ -21,7 +21,7 @@
 | Ollama | CLI-friendly | Less visibility for demos | Rejected for POC |
 | Rules-only / no LLM | Fast, deterministic | Poor natural language for chat | Fallback only |
 
-## Planned architecture (implementation Weeks 7–8)
+## Planned architecture (RAG pipeline — Week 7)
 
 ```mermaid
 flowchart TD
@@ -41,7 +41,7 @@ If LM Studio is unreachable, the fallback path returns knowledge excerpts with a
 The onboarding assistant will answer from:
 
 - CGI onboarding, CI/CD, security, Git workflow, AMS intake topics  
-- Change risk and NBQ concepts (algorithm-aware context in chat — Week 8)  
+- Change risk and NBQ concepts (algorithm-aware context in chat — Week 7+)  
 - Sources cited in every answer when documentation is found (US-13)
 
 **Future (v2):** relational onboarding database (US-15, US-16) replacing file-based `catalog.json`.
@@ -67,4 +67,4 @@ curl http://localhost:1234/v1/models
 
 Expected: Mistral model listed and server running on port 1234.
 
-Implementation of backend → LM Studio calls: **Week 7–8**.
+Backend → LM Studio: **Week 3** (minimal `/chat`, no RAG) → **Week 7** (RAG, sources, fallback quality).

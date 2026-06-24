@@ -149,6 +149,6 @@ Allowed origins for POC:
 
 ## Review
 
-Group 2 referent: please confirm mandatory fields and response shapes before Week 3 implementation begins.
+Group 2 referent: please confirm mandatory fields and response shapes before Week 4 UI ships.
 
 See also [G2_INTEGRATION.md](G2_INTEGRATION.md).

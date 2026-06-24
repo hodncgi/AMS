@@ -17,7 +17,7 @@ flowchart TB
         AI[ai_service → LM Studio]
     end
 
-    subgraph UI["Onboarding UI — Figma template (Week 9)"]
+    subgraph UI["Onboarding UI — Figma template (Week 8)"]
         Onb[Onboarding tab]
         Demo[Demo tabs]
     end
@@ -30,10 +30,10 @@ flowchart TB
     API --> RAG
     API --> AI
     AI --> LM
-    Demo -.->|static Week 9| Demo
+    Demo -.->|static demo| Demo
 ```
 
-## Chat request flow (Week 8+)
+## Chat request flow (Week 7+ — full RAG)
 
 ```mermaid
 sequenceDiagram

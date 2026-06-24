@@ -29,7 +29,7 @@ Group 3 needs local AI for onboarding chat and NBQ `why` justifications without 
 | Retrieval | Keyword RAG (default) | No Hugging Face download blocker on corporate network |
 | Semantic RAG | Deferred to v2 | Optional when network allows |
 | Backend (from Week 3) | FastAPI + Pydantic | OpenAPI for Group 2; team Python skills |
-| Frontend (from Week 9) | React + Vite + Figma template | Manager-provided UI assets |
+| Frontend (from Week 8) | React + Vite + Figma template | Manager-provided UI assets |
 
 ## Proof of readiness (Week 2)
 

@@ -5,7 +5,7 @@
 
 ## 1. Purpose
 
-Define what the onboarding assistant **may** answer in v1 and how knowledge is sourced, before implementation (Weeks 6–8).
+Define what the onboarding assistant **may** answer in v1 and how knowledge is sourced, before full RAG implementation (Weeks 6–7).
 
 ## 2. Topic domains
 
@@ -32,8 +32,8 @@ Define what the onboarding assistant **may** answer in v1 and how knowledge is s
 flowchart TD
     Q[User question] --> KW[keyword match on chunks<br/>Week 6–7]
     KW --> ALG{Risk or NBQ query?}
-    ALG -->|yes| CTX[inject algorithm context<br/>Week 8]
-    ALG -->|no| GEN[Mistral generates answer<br/>with sources — Week 8]
+    ALG -->|yes| CTX[inject algorithm context<br/>Week 5+]
+    ALG -->|no| GEN[Mistral generates answer<br/>with sources — Week 7]
     CTX --> GEN
     LS{LM Studio online?}
     GEN --> LS

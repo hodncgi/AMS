@@ -1,17 +1,18 @@
 # UI → API mapping (Week 2)
 
-Maps each Figma template area to Group 3 backend routes defined in [../developer/API.md](../developer/API.md).
+Maps each Figma template area to Group 3 backend routes defined in [../developer/API.md](../developer/API.md).  
+Week numbers follow [../developer/ROADMAP.md](../developer/ROADMAP.md).
 
 ## Onboarding tab (primary)
 
 | UI element | User action | API call | Week |
 |------------|-------------|----------|------|
-| Chat input | Send message | `POST /chat` | 9 |
-| Send button | Submit conversation | `POST /chat` | 9 |
-| Source list under reply | Read citations | Response field `sources[]` | 9 |
-| Mode badge | See full AI vs fallback | Response field `mode` | 9 |
-| Pipeline / status bar | Check assistant status | `GET /health` | 9 |
-| Suggested questions | Quick prompts | `POST /chat` (prefilled) | 9 |
+| Chat input | Send message | `POST /chat` | 3 (API) · 4 (HTML UI) · 8 (React UI) |
+| Send button | Submit conversation | `POST /chat` | 3 · 4 · 8 |
+| Source list under reply | Read citations | Response field `sources[]` | 7 (RAG) · 8 (React display) |
+| Mode badge | See full AI vs fallback | Response field `mode` | 3+ |
+| Pipeline / status bar | Check assistant status | `GET /health` | 3+ |
+| Suggested questions | Quick prompts | `POST /chat` (prefilled) | 4 |
 
 ## Management tab (demo)
 
