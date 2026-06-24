@@ -104,15 +104,26 @@ def call_lm_studio(messages: list[dict]) -> str:
     return response.json()["choices"][0]["message"]["content"]
 
 
+def _build_lm_messages(user_messages: list[dict]) -> list[dict]:
+    """Fold system prompt into the first user turn — Mistral in LM Studio rejects role=system."""
+    filtered = [m for m in user_messages if m.get("role") in ("user", "assistant")]
+    if not filtered:
+        return [{"role": "user", "content": WEEK3_CHAT_SYSTEM_PROMPT}]
+    out: list[dict] = []
+    for i, m in enumerate(filtered):
+        content = m["content"]
+        if i == 0 and m["role"] == "user":
+            content = f"{WEEK3_CHAT_SYSTEM_PROMPT}\n\n{content}"
+        out.append({"role": m["role"], "content": content})
+    return out
+
+
 def generate_chat_minimal(messages: list[dict]) -> dict:
     """Week 3 chat — direct Mistral, no RAG."""
     started = time.perf_counter()
     user_messages = [m for m in messages if m.get("role") in ("user", "assistant")]
 
-    lm_messages = [
-        {"role": "system", "content": WEEK3_CHAT_SYSTEM_PROMPT},
-        *user_messages,
-    ]
+    lm_messages = _build_lm_messages(user_messages)
 
     try:
         raw = call_lm_studio(lm_messages)
