@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import re
 import time
 
@@ -15,6 +16,8 @@ from config import (
     LM_STUDIO_TIMEOUT,
     LM_STUDIO_URL,
 )
+
+logger = logging.getLogger(__name__)
 
 _resolved_model: str | None = None
 
@@ -44,7 +47,7 @@ def resolve_lm_studio_model(force_refresh: bool = False) -> str:
                 _resolved_model = model_id
                 return _resolved_model
     except Exception as error:
-        print(f"LM Studio model auto-detection failed: {error!r}")
+        logger.warning("LM Studio model auto-detection failed: %r", error)
 
     _resolved_model = "mistral"
     return _resolved_model
@@ -137,7 +140,7 @@ def generate_chat_minimal(messages: list[dict]) -> dict:
             "response_time_ms": elapsed_ms,
         }
     except Exception as error:
-        print(f"LM Studio chat error: {error!r}")
+        logger.warning("LM Studio chat error: %r", error)
         if not AI_FALLBACK_ENABLED:
             raise
         elapsed_ms = int((time.perf_counter() - started) * 1000)

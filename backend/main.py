@@ -3,7 +3,7 @@
 from pathlib import Path
 from typing import List, Literal
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -51,6 +51,11 @@ async def health_check():
 
 @app.post("/chat")
 async def chat(request: ChatRequest):
+    if request.messages[-1].role != "user":
+        raise HTTPException(
+            status_code=400,
+            detail="Last message must be from the user.",
+        )
     payload = [m.model_dump() for m in request.messages]
     return generate_chat_minimal(payload)
 

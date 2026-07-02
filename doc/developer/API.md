@@ -1,7 +1,7 @@
 # API Contract — Draft for Group 2
 
 **Document type:** API contract draft (Week 2 deliverable)  
-**Status:** Partial — `/health` and minimal `/chat` implemented (Week 3)  
+**Status:** Week 3 endpoints implemented — `/health` and minimal `/chat` (no RAG until Week 7)  
 **Base URL:** `http://localhost:8000`  
 **OpenAPI:** `http://localhost:8000/docs`
 
@@ -16,7 +16,7 @@ This document defines the JSON contracts Group 2 will use to integrate the G3 en
 | Route | Week | Status |
 |-------|------|--------|
 | `GET /health` | 3 | **Implemented** |
-| `POST /chat` | 3 (minimal) → 7 | **Implemented** (Week 3: no RAG) |
+| `POST /chat` | 3 (minimal) → 7 | **Implemented** (no RAG until Week 7) |
 | `POST /nbq/next` | 5 | Planned |
 | `POST /change-risk` | 5 | Planned |
 | `GET /g3-test` | 8 | Planned |
@@ -129,7 +129,12 @@ Onboarding conversation with history and RAG context.
 }
 ```
 
-**Modes:** `mistral` (full AI) | `fallback` (knowledge base only, LM Studio offline)
+**Validation (Week 3):**
+- `messages` must contain at least one entry  
+- Each `content` must be non-empty  
+- Last message must have `role: "user"`
+
+**Modes:** `mistral` (full AI) | `fallback` (LM Studio offline; knowledge-base fallback in Week 7)
 
 ---
 
