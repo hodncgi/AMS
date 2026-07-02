@@ -2,7 +2,7 @@
 
 Aligned with `doc/deliverables/G3_11_Week_Roadmap.pdf`.
 
-**Current position:** **Week 2 complete** · **Week 3 in progress** — backend + minimal chat underway; **Week 4** = HTML chat UI.
+**Current position:** **Week 3 complete** · **Week 4 in progress** — HTML chat UI + suggested questions; **Week 5** = NBQ + Change Risk.
 
 ## Structure: 8 + 3
 
@@ -24,8 +24,8 @@ Aligned with `doc/deliverables/G3_11_Week_Roadmap.pdf`.
 |------|-------|------------------|
 | **1** | Project launch | User stories, personas |
 | **2** | Architecture & API design | **Complete** |
-| **3** | Backend + minimal chat | **In progress** — `/health`, `/chat` |
-| **4** | Usable chat UI | HTML chat page, suggested questions |
+| **3** | Backend + minimal chat | **Complete** — `/health`, `/chat` |
+| **4** | Usable chat UI | **In progress** — HTML chat page, suggested questions |
 | **5** | NBQ + Change Risk | Both algorithm endpoints |
 | **6** | G2 API alignment | Route mapping when G2 connects |
 | **7** | Knowledge, RAG & chat quality | Sources, fallback |

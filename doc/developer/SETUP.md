@@ -1,6 +1,6 @@
-# Setup — Week 3 (backend + LM Studio)
+# Setup — Week 4 (backend + HTML chat + LM Studio)
 
-Week 3 adds the **FastAPI backend** on port 8000 with `/health` and minimal `/chat`. See [ROADMAP.md](ROADMAP.md).
+Week 3 delivered the **FastAPI backend** (`/health`, `/chat`). Week 4 adds the **HTML chat UI** at `/ui/`. See [ROADMAP.md](ROADMAP.md).
 
 ---
 
@@ -23,7 +23,7 @@ curl http://localhost:1234/v1/models
 
 ---
 
-## 2. Backend
+## 2. Backend + chat UI
 
 ```powershell
 python -m venv .venv
@@ -34,7 +34,7 @@ uvicorn main:app --reload --app-dir backend
 
 Optional: copy `backend/.env.example` to `backend/.env`.
 
-### Verify
+### Verify API
 
 ```powershell
 curl http://localhost:8000/health
@@ -44,7 +44,11 @@ curl -X POST http://localhost:8000/chat ^
   -d "{\"messages\":[{\"role\":\"user\",\"content\":\"What is AMS intake?\"}]}"
 ```
 
-Docs: http://localhost:8000/docs
+### Verify chat UI (Week 4)
+
+Open **http://localhost:8000/ui/** in a browser. Try a suggested question or type your own.
+
+API docs: http://localhost:8000/docs
 
 ### Tests
 
@@ -58,7 +62,6 @@ pytest tests/ -v
 
 | Week | Task |
 |------|------|
-| 4 | HTML chat UI |
 | 5 | NBQ + Change Risk |
 | 6 | G2 API alignment |
 | 7 | Knowledge base + RAG in chat |

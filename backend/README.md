@@ -1,6 +1,6 @@
-# Backend — Week 3 in progress (FastAPI + health + minimal chat)
+# Backend — Week 4 in progress (FastAPI + health + chat + HTML UI)
 
-FastAPI backend on port **8000** with **`GET /health`** and **`POST /chat`** (Mistral direct, no RAG). Algorithms and knowledge base follow Weeks 5–7.
+FastAPI backend on port **8000** with **`GET /health`**, **`POST /chat`** (Mistral direct, no RAG), and **HTML chat UI** at **`/ui/`**.
 
 ## Quick start
 
@@ -15,10 +15,10 @@ Verify:
 
 ```powershell
 curl http://localhost:8000/health
-curl -X POST http://localhost:8000/chat -H "Content-Type: application/json" -d "{\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}"
 ```
 
-OpenAPI: http://localhost:8000/docs
+- OpenAPI: http://localhost:8000/docs  
+- Chat UI: http://localhost:8000/ui/
 
 ## Tests
 
@@ -30,9 +30,10 @@ pytest tests/ -v
 
 ```mermaid
 flowchart TB
-    ROOT[backend/] --> MAIN[main.py ✓ Week 3]
-    ROOT --> CFG[config.py ✓]
-    ROOT --> AI[ai_service.py — health + minimal chat ✓]
+    ROOT[backend/] --> MAIN[main.py — API + /ui mount]
+    ROOT --> CFG[config.py]
+    ROOT --> AI[ai_service.py — health + chat]
+    UI[frontend/chat-live/] --> MAIN
     ROOT --> ALG[algorithms.py — Week 5]
     ROOT --> KB[knowledge_base.py — Week 7]
 ```

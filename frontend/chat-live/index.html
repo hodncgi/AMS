@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CGI Onboarding Assistant — Live Chat (Week 4)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Calibri, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #e31937;
+      color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .logo-box {
+      background: white;
+      padding: 6px 18px;
+      border-radius: 4px;
+      color: #e31937;
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+    .brand h1 { font-size: 17px; font-weight: 500; }
+    .brand p { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+    .status-pill {
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .status-pill.ok { background: rgba(34, 197, 94, 0.2); }
+    .status-pill.warn { background: rgba(251, 191, 36, 0.25); }
+    main {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 20px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 520px;
+    }
+    .card-head {
+      padding: 16px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      background: #fafafa;
+    }
+    .card-head h2 { font-size: 16px; margin-bottom: 4px; }
+    .card-head p { font-size: 13px; color: #64748b; }
+    .messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .bubble {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+    }
+    .bubble.bot {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      align-self: flex-start;
+    }
+    .bubble.user {
+      background: #e31937;
+      color: white;
+      align-self: flex-end;
+    }
+    .meta {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #64748b;
+    }
+    .typing {
+      font-size: 13px;
+      color: #64748b;
+      padding: 0 20px 8px;
+      display: none;
+    }
+    .typing.show { display: block; }
+    .suggestions {
+      padding: 0 20px 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .suggestions button {
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .suggestions button:hover {
+      border-color: #e31937;
+      color: #e31937;
+    }
+    .input-row {
+      display: flex;
+      gap: 8px;
+      padding: 16px 20px;
+      border-top: 1px solid #e2e8f0;
+      background: #fafafa;
+    }
+    .input-row input {
+      flex: 1;
+      padding: 12px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .input-row input:focus {
+      outline: 2px solid rgba(227, 25, 55, 0.25);
+      border-color: #e31937;
+    }
+    .input-row button {
+      background: #e31937;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      min-width: 88px;
+    }
+    .input-row button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .error-banner {
+      display: none;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+    .error-banner.show { display: block; }
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo-box">CGI</div>
+        <div>
+          <h1>Onboarding Assistant</h1>
+          <p>Group 3 — Week 4 live chat (HTML)</p>
+        </div>
+      </div>
+      <div id="apiStatus" class="status-pill">Checking API…</div>
+    </div>
+  </header>
+
+  <main>
+    <div id="errorBanner" class="error-banner"></div>
+    <section class="card">
+      <div class="card-head">
+        <h2>Ask the assistant</h2>
+        <p>Connected to <code>POST /chat</code> on this server. Sources and RAG arrive in Week 7.</p>
+      </div>
+      <div id="messages" class="messages">
+        <div class="bubble bot">
+          Hello! I'm CGI's Technical Onboarding Assistant. Pick a suggested question or type your own.
+        </div>
+      </div>
+      <div id="typing" class="typing">Assistant is thinking…</div>
+      <div id="suggestions" class="suggestions"></div>
+      <form id="chatForm" class="input-row">
+        <input id="messageInput" type="text" placeholder="Type your question…" autocomplete="off" />
+        <button id="sendBtn" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>Group 3 AMS Engine — Week 4 HTML chat · React UI planned Week 8</footer>
+
+  <script>
+    const SUGGESTED_QUESTIONS = [
+      "What is this assistant for?",
+      "How does AMS intake work?",
+      "What is the CI/CD process at CGI?",
+      "What are the information security policies?",
+    ];
+
+    const messagesEl = document.getElementById("messages");
+    const suggestionsEl = document.getElementById("suggestions");
+    const typingEl = document.getElementById("typing");
+    const formEl = document.getElementById("chatForm");
+    const inputEl = document.getElementById("messageInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const apiStatusEl = document.getElementById("apiStatus");
+    const errorBannerEl = document.getElementById("errorBanner");
+
+    const history = [];
+
+    function showError(message) {
+      errorBannerEl.textContent = message;
+      errorBannerEl.classList.add("show");
+    }
+
+    function clearError() {
+      errorBannerEl.textContent = "";
+      errorBannerEl.classList.remove("show");
+    }
+
+    function appendBubble(role, content, meta) {
+      const bubble = document.createElement("div");
+      bubble.className = "bubble " + role;
+      bubble.textContent = content;
+      if (meta) {
+        const metaEl = document.createElement("div");
+        metaEl.className = "meta";
+        metaEl.textContent = meta;
+        bubble.appendChild(metaEl);
+      }
+      messagesEl.appendChild(bubble);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function renderSuggestions() {
+      suggestionsEl.innerHTML = "";
+      SUGGESTED_QUESTIONS.forEach((question) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = question;
+        btn.addEventListener("click", () => sendMessage(question));
+        suggestionsEl.appendChild(btn);
+      });
+    }
+
+    async function refreshHealth() {
+      try {
+        const res = await fetch("/health");
+        if (!res.ok) throw new Error("Health check failed");
+        const data = await res.json();
+        const ai = data.ai?.lm_studio?.status === "online" ? "Mistral online" : "Fallback ready";
+        apiStatusEl.textContent = "API online · " + ai;
+        apiStatusEl.classList.add(data.ai?.lm_studio?.status === "online" ? "ok" : "warn");
+      } catch {
+        apiStatusEl.textContent = "API unreachable";
+        apiStatusEl.classList.add("warn");
+      }
+    }
+
+    async function sendMessage(text) {
+      const content = text.trim();
+      if (!content) return;
+
+      clearError();
+      appendBubble("user", content);
+      history.push({ role: "user", content });
+
+      inputEl.value = "";
+      sendBtn.disabled = true;
+      typingEl.classList.add("show");
+
+      try {
+        const res = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: history }),
+        });
+        if (!res.ok) throw new Error("Chat request failed (" + res.status + ")");
+        const data = await res.json();
+        const reply = data.reply || "No reply returned.";
+        history.push({ role: "assistant", content: reply });
+        const meta = "Mode: " + (data.mode || "unknown") + " · retrieval: " + (data.retrieval_method || "none");
+        appendBubble("bot", reply, meta);
+      } catch (err) {
+        showError(err.message || "Could not reach the chat API. Is the backend running on port 8000?");
+      } finally {
+        typingEl.classList.remove("show");
+        sendBtn.disabled = false;
+        inputEl.focus();
+      }
+    }
+
+    formEl.addEventListener("submit", (event) => {
+      event.preventDefault();
+      sendMessage(inputEl.value);
+    });
+
+    renderSuggestions();
+    refreshHealth();
+    inputEl.focus();
+  </script>
+</body>
+</html>

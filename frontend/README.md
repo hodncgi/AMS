@@ -1,8 +1,20 @@
-# Frontend — Week 2
+# Frontend
 
-## Design preview (Week 2 deliverable)
+## Design preview (Week 2 — complete)
 
-**[design-preview/index.html](design-preview/index.html)** — static mockup from the manager Figma template. Open in any browser.
+**[design-preview/index.html](design-preview/index.html)** — static mockup from the manager Figma template.
+
+## Live HTML chat (Week 4 — in progress)
+
+**[chat-live/index.html](chat-live/index.html)** — browser chat wired to `POST /chat`.
+
+Start the backend, then open **http://localhost:8000/ui/**
+
+| Feature | Status |
+|---------|--------|
+| Message history → `/chat` | In progress |
+| Suggested starter questions (US-02) | In progress |
+| Health badge | In progress |
 
 ## Planned timeline
 
@@ -14,7 +26,7 @@
 ```mermaid
 flowchart LR
     subgraph W4["Week 4 — HTML chat"]
-        HTML[design-preview + fetch]
+        HTML[chat-live /ui/]
     end
 
     subgraph W8["Week 8 — React"]

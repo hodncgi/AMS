@@ -4,13 +4,13 @@
 
 **Repository role:** AMS is the **Group 3 delivery repository** — week-by-week code, documentation, and progress for managers and stakeholders.
 
-**Current project week:** 3 of 11 (**in progress** — Week 2 complete)
+**Current project week:** 4 of 11 (**in progress** — Week 3 complete)
 
 ## Quick navigation
 
 | I need to… | Go to |
 |------------|-------|
-| **Present Week 3 progress to management** | [management/WEEK3_PROGRESS_SUMMARY.md](management/WEEK3_PROGRESS_SUMMARY.md) |
+| **Present Week 4 progress to management** | [management/WEEK4_PROGRESS_SUMMARY.md](management/WEEK4_PROGRESS_SUMMARY.md) |
 | **Week-by-week progress summaries** | [management/](management/) |
 | **Formal user stories + roadmap (PDF)** | [deliverables/](deliverables/) |
 | **Install and run the backend** | [developer/SETUP.md](developer/SETUP.md) |

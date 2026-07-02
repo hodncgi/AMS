@@ -1,18 +1,22 @@
-"""G3 AI Engine — FastAPI entry point (Week 3)."""
+"""G3 AI Engine — FastAPI entry point (Week 4)."""
 
+from pathlib import Path
 from typing import List, Literal
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from ai_service import check_ai_health, generate_chat_minimal
 from config import AI_FALLBACK_ENABLED
 
+CHAT_UI_DIR = Path(__file__).resolve().parent.parent / "frontend" / "chat-live"
+
 app = FastAPI(
     title="G3 AI Engine",
-    description="AMS intake decision engine — Week 3: health + minimal chat",
-    version="0.3.0-week3",
+    description="AMS intake decision engine — Week 4: health, chat API, HTML chat UI",
+    version="0.4.0-week4",
 )
 
 app.add_middleware(
@@ -49,3 +53,7 @@ async def health_check():
 async def chat(request: ChatRequest):
     payload = [m.model_dump() for m in request.messages]
     return generate_chat_minimal(payload)
+
+
+if CHAT_UI_DIR.is_dir():
+    app.mount("/ui", StaticFiles(directory=str(CHAT_UI_DIR), html=True), name="chat-ui")
