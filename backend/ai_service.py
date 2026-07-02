@@ -1,4 +1,4 @@
-"""AI service — LM Studio health + minimal chat (Week 3, no RAG)."""
+"""AI service — LM Studio health + minimal chat (Week 4, no RAG)."""
 
 from __future__ import annotations
 

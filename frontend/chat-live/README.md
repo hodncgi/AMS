@@ -18,5 +18,6 @@ uvicorn main:app --reload --app-dir backend
 - Four suggested starter questions (US-02)
 - API health badge (`GET /health`)
 - Mode badge in replies (`mistral` / `fallback`)
+- Slow-response hint and request guard while waiting for Mistral
 
 Sources and RAG display ship in **Week 7**; React UI in **Week 8**.

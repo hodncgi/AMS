@@ -17,15 +17,22 @@
 | 2 | Wired to `POST /chat` | In progress | Same-origin fetch from `/ui/` |
 | 3 | Suggested questions (≥4) | In progress | US-02 prompts in UI |
 | 4 | Served by FastAPI | In progress | `GET /ui/` mount in `backend/main.py` |
-| 5 | Pytest | In progress | `tests/test_week4.py` |
+| 5 | Pytest | In progress | `tests/test_week3.py`, `tests/test_week4.py` |
+| 6 | Demo / troubleshooting notes | In progress | This file + `doc/developer/SETUP.md` |
 
-## What to demo today (15 min)
+## Manager demo checklist (~10 min)
 
-1. Start LM Studio (Mistral) + backend  
-2. Open **http://localhost:8000/ui/**  
-3. Click a suggested question → show assistant reply  
-4. Type a custom question  
-5. Stop LM Studio → show `mode: fallback` in reply metadata  
+| Step | Action | What to show |
+|------|--------|--------------|
+| 1 | `uvicorn main:app --reload --app-dir backend` | API starts on port 8000 |
+| 2 | Start LM Studio (Mistral, port 1234) | `GET /health` → Mistral online |
+| 3 | Open **http://localhost:8000/ui/** | Live chat page (not the Week 2 static preview) |
+| 4 | Click a **suggested question** | Reply appears; mode `mistral` in metadata |
+| 5 | Type a custom question | Conversation history preserved |
+| 6 | Stop LM Studio, send again | `mode: fallback` — graceful degradation |
+| 7 | `pytest tests/ -v` | Automated checks green |
+
+**Note:** First Mistral reply on CPU may take **1–2 minutes** — the UI shows a waiting hint; this is expected for the POC.
 
 ## Still to close before Week 4 sign-off
 
@@ -42,5 +49,6 @@
 
 | Risk | Mitigation |
 |------|------------|
-| Slow Mistral on CPU | Show typing indicator; document timeout in SETUP |
+| Slow Mistral on CPU | Typing hint + troubleshooting table in SETUP |
 | Manager expects sources in chat | RAG is Week 7 — mode badge shows `retrieval: none` today |
+| Confusion with static Figma preview | Banner on design-preview points to `/ui/` for live chat |

@@ -6,7 +6,7 @@ from typing import List, Literal
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from ai_service import check_ai_health, generate_chat_minimal
 from config import AI_FALLBACK_ENABLED
@@ -33,11 +33,11 @@ app.add_middleware(
 
 class ChatMessage(BaseModel):
     role: Literal["user", "assistant"]
-    content: str
+    content: str = Field(min_length=1)
 
 
 class ChatRequest(BaseModel):
-    messages: List[ChatMessage]
+    messages: List[ChatMessage] = Field(min_length=1)
 
 
 @app.get("/health")

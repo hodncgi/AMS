@@ -1,4 +1,4 @@
-"""Backend configuration — LM Studio (Week 3)."""
+"""Backend configuration — LM Studio (Week 4)."""
 
 import os
 

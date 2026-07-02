@@ -4,8 +4,9 @@ __pycache__/
 .venv/
 venv/
 .env
+.pytest_cache/
 
-# Node (planned week 9+)
+# Node (React UI — Week 8)
 node_modules/
 dist/
 

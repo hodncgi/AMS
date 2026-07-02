@@ -58,6 +58,20 @@ pytest tests/ -v
 
 ---
 
+## Troubleshooting
+
+| Symptom | Likely cause | Fix |
+|---------|----------------|-----|
+| Chat hangs 30s–2min | Mistral on CPU | Normal — wait; UI shows a slow-response hint after ~8s |
+| `mode: fallback` in replies | LM Studio offline | Start server on port 1234 or use fallback for demos |
+| `/ui/` not loading | Backend not running | `uvicorn main:app --reload --app-dir backend` |
+| Design preview input disabled | Expected | Preview is static — use **http://localhost:8000/ui/** for live chat |
+| `422` on `/chat` | Empty message | Send at least one non-empty user message |
+
+LM Studio timeout defaults to **300s** (`LM_STUDIO_TIMEOUT` in `backend/.env`). The browser UI aborts after **180s** and asks you to retry.
+
+---
+
 ## Upcoming
 
 | Week | Task |

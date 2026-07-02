@@ -130,9 +130,13 @@
       font-size: 12px;
       cursor: pointer;
     }
-    .suggestions button:hover {
+    .suggestions button:hover:not(:disabled) {
       border-color: #e31937;
       color: #e31937;
+    }
+    .suggestions button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
     }
     .input-row {
       display: flex;
@@ -151,6 +155,9 @@
     .input-row input:focus {
       outline: 2px solid rgba(227, 25, 55, 0.25);
       border-color: #e31937;
+    }
+    .input-row input:disabled {
+      background: #f1f5f9;
     }
     .input-row button {
       background: #e31937;
@@ -239,6 +246,33 @@
     const errorBannerEl = document.getElementById("errorBanner");
 
     const history = [];
+    let busy = false;
+    let slowTimer = null;
+    const CHAT_TIMEOUT_MS = 180000;
+
+    function setBusy(isBusy) {
+      busy = isBusy;
+      sendBtn.disabled = isBusy;
+      inputEl.disabled = isBusy;
+      suggestionsEl.querySelectorAll("button").forEach((btn) => {
+        btn.disabled = isBusy;
+      });
+    }
+
+    function startSlowHint() {
+      clearTimeout(slowTimer);
+      slowTimer = setTimeout(() => {
+        if (busy) {
+          typingEl.textContent =
+            "Assistant is thinking… Mistral on CPU can take 1–2 minutes. Please wait.";
+        }
+      }, 8000);
+    }
+
+    function stopSlowHint() {
+      clearTimeout(slowTimer);
+      typingEl.textContent = "Assistant is thinking…";
+    }
 
     function showError(message) {
       errorBannerEl.textContent = message;
@@ -291,21 +325,26 @@
 
     async function sendMessage(text) {
       const content = text.trim();
-      if (!content) return;
+      if (!content || busy) return;
 
       clearError();
       appendBubble("user", content);
       history.push({ role: "user", content });
 
       inputEl.value = "";
-      sendBtn.disabled = true;
+      setBusy(true);
       typingEl.classList.add("show");
+      startSlowHint();
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), CHAT_TIMEOUT_MS);
 
       try {
         const res = await fetch("/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ messages: history }),
+          signal: controller.signal,
         });
         if (!res.ok) throw new Error("Chat request failed (" + res.status + ")");
         const data = await res.json();
@@ -314,10 +353,22 @@
         const meta = "Mode: " + (data.mode || "unknown") + " · retrieval: " + (data.retrieval_method || "none");
         appendBubble("bot", reply, meta);
       } catch (err) {
-        showError(err.message || "Could not reach the chat API. Is the backend running on port 8000?");
+        if (err.name === "AbortError") {
+          showError(
+            "Request timed out after 3 minutes. Check LM Studio is running, or retry with a shorter question."
+          );
+          history.pop();
+          messagesEl.removeChild(messagesEl.lastChild);
+        } else {
+          showError(err.message || "Could not reach the chat API. Is the backend running on port 8000?");
+          history.pop();
+          messagesEl.removeChild(messagesEl.lastChild);
+        }
       } finally {
+        clearTimeout(timeoutId);
+        stopSlowHint();
         typingEl.classList.remove("show");
-        sendBtn.disabled = false;
+        setBusy(false);
         inputEl.focus();
       }
     }

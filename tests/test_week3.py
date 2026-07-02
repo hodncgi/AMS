@@ -35,6 +35,19 @@ def test_chat_returns_json_shape():
     assert isinstance(body["sources"], list)
 
 
+def test_chat_rejects_empty_message_list():
+    response = client.post("/chat", json={"messages": []})
+    assert response.status_code == 422
+
+
+def test_chat_rejects_empty_content():
+    response = client.post(
+        "/chat",
+        json={"messages": [{"role": "user", "content": ""}]},
+    )
+    assert response.status_code == 422
+
+
 def test_openapi_lists_week3_routes():
     schema = client.get("/openapi.json").json()
     assert "/health" in schema["paths"]
